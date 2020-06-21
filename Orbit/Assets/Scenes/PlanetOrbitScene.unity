@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 379824304}
   - component: {fileID: 379824302}
   - component: {fileID: 379824305}
+  - component: {fileID: 379824306}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalThrust: 20
+  frictionCoefficient: 0.5
 --- !u!50 &379824303
 Rigidbody2D:
   serializedVersion: 4
@@ -459,6 +461,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceCoefficient: 1.3
+--- !u!114 &379824306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379824299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda112f977d1440678fef2e7643ceb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repelStrength: 10
+  distanceExponent: 4
 --- !u!1 &886480811
 GameObject:
   m_ObjectHideFlags: 0
