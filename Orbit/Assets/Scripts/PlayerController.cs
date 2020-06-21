@@ -5,16 +5,16 @@
 public class PlayerController : MonoBehaviour
 {
 
-    private Rigidbody2D myBody;
+    private Rigidbody2D body;
 
-    public float horizontalThrust;
+    public float horizontalThrust = 20f;
+    public float frictionCoefficient = 0.5f;
 
     private float horizontalDirection;
 
-
     void Awake()
     {
-        myBody = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
         horizontalDirection = 0;
     }
 
@@ -34,13 +34,23 @@ public class PlayerController : MonoBehaviour
      */
     private void FixedUpdate()
     {
+        // apply thrust in the direction the user is indicating
         applyForce(horizontalThrust * horizontalDirection, 0);
+
+        // apply force in the opposite direction the ship is moving in
+        // (kind of like friction)
+        applyForce(-body.velocity * frictionCoefficient);
     }
 
 
     private void applyForce(float x, float y, ForceMode2D mode = ForceMode2D.Force)
     {
-        myBody.AddForce(new Vector2(x, y), mode);
+        body.AddForce(new Vector2(x, y), mode);
+    }
+
+    private void applyForce(Vector2 force, ForceMode2D mode = ForceMode2D.Force)
+    {
+        body.AddForce(force, mode);
     }
 
 }
